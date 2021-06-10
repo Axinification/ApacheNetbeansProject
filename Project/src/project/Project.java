@@ -5,11 +5,50 @@
  */
 package project;
 
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+
 /**
  *
  * @author Olek
  */
 public class Project {
+    public EntityManagerFactory emf;
+    public EntityManager getEntityManager() {
+        if (emf==null) emf = Persistence.createEntityManagerFactory("ProjectPU");
+        return emf.createEntityManager();
+    }
+    
+    public void zapisz( StudentEntity student) {
+       EntityManager em = getEntityManager();
+       em.getTransaction().begin();
+       try {
+            em.persist(student);
+            // 5. zatwierdzić transakcję  
+            em.getTransaction().commit();
+        } 
+        catch (Exception e) {
+            System.err.print("Error "+e.getMessage());
+            em.getTransaction().rollback();
+        }
+        finally {
+            em.close();
+        }
+    }
+    
+    public void studenci() {
+        EntityManager em = getEntityManager();
+        TypedQuery<StudentEntity> q = em.createNamedQuery("Student.findAll",
+                StudentEntity.class);
+        
+        List<StudentEntity> rezultat = q.getResultList();
+        for(int i = 0; i<rezultat.size(); i++) {
+            System.out.println(rezultat.get(i).getIndeks() + " " + rezultat.get(i).getImie() + " " + rezultat.get(i).getNazwisko());
+        }
+    }
 
     /**
      * @param args the command line arguments

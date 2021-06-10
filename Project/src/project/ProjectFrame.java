@@ -137,7 +137,7 @@ public class ProjectFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Numer Indeksu", "Imie", "Nazwisko", "Wydział", "Kierunek", "Grupa"
+                "Id", "Numer Indeksu", "Imie", "Nazwisko", "Wydział", "Kierunek", "Grupa"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
