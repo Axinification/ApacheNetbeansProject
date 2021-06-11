@@ -39,15 +39,14 @@ public class Project {
         }
     }
     
-    public void studenci() {
+    public List<StudentEntity> wyswietl() {
         EntityManager em = getEntityManager();
-        TypedQuery<StudentEntity> q = em.createNamedQuery("Student.findAll",
+        TypedQuery<StudentEntity> q = em.createNamedQuery("StudentEntity.findAll",
                 StudentEntity.class);
         
-        List<StudentEntity> rezultat = q.getResultList();
-        for(int i = 0; i<rezultat.size(); i++) {
-            System.out.println(rezultat.get(i).getIndeks() + " " + rezultat.get(i).getImie() + " " + rezultat.get(i).getNazwisko());
-        }
+        
+        List<StudentEntity> result = q.getResultList();
+        return result;
     }
 
     /**

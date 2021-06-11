@@ -9,8 +9,6 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -23,7 +21,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Studenci")
 @NamedQueries({
-    @NamedQuery(name = "Studenci.findAll", query = "SELECT s FROM Studenci s"),
+    @NamedQuery(name = "StudentEntity.findAll", query = "SELECT s FROM StudentEntity s"),
 //    @NamedQuery(name = "Studenci.findById", query = "SELECT s FROM Studenci s WHERE s.id = :id"),
 //    @NamedQuery(name = "Studenci.findByImie", query = "SELECT s FROM Studenci s WHERE s.imie = :imie"),
 //    @NamedQuery(name = "Studenci.findByNazwisko", query = "SELECT s FROM Studenci s WHERE s.nazwisko = :nazwisko"),
@@ -53,7 +51,6 @@ public class StudentEntity implements Serializable {
     private String grupa;
     
     public StudentEntity() {
-        
     }
     
     public StudentEntity(Integer id, Integer indeks, String imie, String nazwisko, String wydzial, String kierunek, String grupa) {

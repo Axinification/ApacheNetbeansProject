@@ -5,20 +5,10 @@
  */
 package project;
 
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.MessageFormat;
-import java.text.SimpleDateFormat;
-import java.util.Vector;
 
 
 
@@ -49,19 +39,22 @@ public class ProjectFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jtextIndeks = new javax.swing.JTextField();
+        indeks = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jtextImie = new javax.swing.JTextField();
+        imie = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jtextWydzial = new javax.swing.JTextField();
+        wydzial = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jtextNazwisko = new javax.swing.JTextField();
+        nazwisko = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jtextGrupa = new javax.swing.JTextField();
+        grupa = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jtextKierunek = new javax.swing.JTextField();
+        kierunek = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        id = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jbtnUpdate = new javax.swing.JButton();
         jbtnAddNew = new javax.swing.JButton();
@@ -90,49 +83,60 @@ public class ProjectFrame extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51), 3));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Numer Indeksu");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 190, 40));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 150, 30));
 
-        jtextIndeks.addActionListener(new java.awt.event.ActionListener() {
+        indeks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtextIndeksActionPerformed(evt);
+                indeksActionPerformed(evt);
             }
         });
-        jPanel3.add(jtextIndeks, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 430, 40));
+        jPanel3.add(indeks, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 490, 30));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Imie");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 190, 40));
-        jPanel3.add(jtextImie, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 430, 40));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 150, 30));
+        jPanel3.add(imie, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 490, 30));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Wydział");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 190, 40));
-        jPanel3.add(jtextWydzial, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 430, 40));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 150, 30));
+        jPanel3.add(wydzial, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 490, 30));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Nazwisko");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 190, 40));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 150, 30));
 
-        jtextNazwisko.addActionListener(new java.awt.event.ActionListener() {
+        nazwisko.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtextNazwiskoActionPerformed(evt);
+                nazwiskoActionPerformed(evt);
             }
         });
-        jPanel3.add(jtextNazwisko, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 430, 40));
+        jPanel3.add(nazwisko, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 490, 30));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Grupa");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 190, 40));
-        jPanel3.add(jtextGrupa, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 430, 40));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 150, 30));
+        jPanel3.add(grupa, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 490, 30));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Kierunek");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 190, 40));
-        jPanel3.add(jtextKierunek, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 430, 40));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 150, 30));
+        jPanel3.add(kierunek, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 490, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel9.setText("Id");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 150, 30));
+
+        id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idActionPerformed(evt);
+            }
+        });
+        jPanel3.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 490, 30));
+
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -140,11 +144,13 @@ public class ProjectFrame extends javax.swing.JFrame {
                 "Id", "Numer Indeksu", "Imie", "Nazwisko", "Wydział", "Kierunek", "Grupa"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTable);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 640, 210));
+        jScrollPane2.setViewportView(jScrollPane1);
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 680, 560));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 640, 240));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 680, 560));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51), 3));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -178,6 +184,11 @@ public class ProjectFrame extends javax.swing.JFrame {
 
         jbtnPrint.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jbtnPrint.setText("Wyświetl");
+        jbtnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnPrintActionPerformed(evt);
+            }
+        });
         jPanel5.add(jbtnPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 210, 60));
 
         jbtnExit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -198,7 +209,7 @@ public class ProjectFrame extends javax.swing.JFrame {
         jLabel8.setText("Wybierz akcje");
         jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 210, 50));
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 100, 250, 560));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 90, 250, 560));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 980, 770));
 
@@ -206,28 +217,29 @@ public class ProjectFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtextIndeksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextIndeksActionPerformed
+    private void indeksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indeksActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtextIndeksActionPerformed
+    }//GEN-LAST:event_indeksActionPerformed
 
-    private void jtextNazwiskoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextNazwiskoActionPerformed
+    private void nazwiskoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nazwiskoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtextNazwiskoActionPerformed
+    }//GEN-LAST:event_nazwiskoActionPerformed
 
     private void jbtnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnUpdateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtnUpdateActionPerformed
 
     private void jbtnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnResetActionPerformed
-        jtextIndeks.setText("");
-        jtextImie.setText("");
-        jtextNazwisko.setText("");
-        jtextWydzial.setText("");
-        jtextKierunek.setText("");
-        jtextGrupa.setText("");
+        id.setText("");
+        indeks.setText("");
+        imie.setText("");
+        nazwisko.setText("");
+        wydzial.setText("");
+        kierunek.setText("");
+        grupa.setText("");
     }//GEN-LAST:event_jbtnResetActionPerformed
 
-    private JFrame frame;
+        private JFrame frame;
     private void jbtnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExitActionPerformed
         frame  = new JFrame("Exit");
         if (JOptionPane.showConfirmDialog(frame, "Czy napewno chcesz wyjść?", "Zarządzanie Studentami",
@@ -238,8 +250,45 @@ public class ProjectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnExitActionPerformed
 
     private void jbtnAddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAddNewActionPerformed
-        // TODO add your handling code here:
+        Project p = new Project();
+        StudentEntity st = new StudentEntity(
+                Integer.parseInt(id.getText()), 
+                Integer.parseInt(indeks.getText()), 
+                imie.getText(), 
+                nazwisko.getText(), 
+                wydzial.getText(), 
+                kierunek.getText(), 
+                grupa.getText()
+            );
+            p.zapisz(st);
+        JOptionPane.showMessageDialog(null, "Dodano studenta");
     }//GEN-LAST:event_jbtnAddNewActionPerformed
+
+    public void show_students(List<StudentEntity> List) {
+        DefaultTableModel table = (DefaultTableModel) jTable.getModel();
+        Object row[] = new Object[7];
+        table.setRowCount(0);
+        for(int i=0;i<List.size();i++) {
+            StudentEntity student = List.get(i);
+            row[0] = student.getId();
+            row[1] = student.getIndeks();
+            row[2] = student.getImie();
+            row[3] = student.getNazwisko();
+            row[4] = student.getWydzial();
+            row[5] = student.getKierunek();
+            row[6] = student.getGrupa();
+            table.addRow(row);
+        }
+    }
+    
+    private void jbtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPrintActionPerformed
+        Project p = new Project();
+        show_students(p.wyswietl());
+    }//GEN-LAST:event_jbtnPrintActionPerformed
+
+    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idActionPerformed
 
     /**
      * @param args the command line arguments
@@ -277,6 +326,10 @@ public class ProjectFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField grupa;
+    private javax.swing.JTextField id;
+    private javax.swing.JTextField imie;
+    private javax.swing.JTextField indeks;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -285,23 +338,22 @@ public class ProjectFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable;
     private javax.swing.JButton jbtnAddNew;
     private javax.swing.JButton jbtnDelete;
     private javax.swing.JButton jbtnExit;
     private javax.swing.JButton jbtnPrint;
     private javax.swing.JButton jbtnReset;
     private javax.swing.JButton jbtnUpdate;
-    private javax.swing.JTextField jtextGrupa;
-    private javax.swing.JTextField jtextImie;
-    private javax.swing.JTextField jtextIndeks;
-    private javax.swing.JTextField jtextKierunek;
-    private javax.swing.JTextField jtextNazwisko;
-    private javax.swing.JTextField jtextWydzial;
+    private javax.swing.JTextField kierunek;
+    private javax.swing.JTextField nazwisko;
+    private javax.swing.JTextField wydzial;
     // End of variables declaration//GEN-END:variables
 }
