@@ -144,6 +144,11 @@ public class ProjectFrame extends javax.swing.JFrame {
                 "Id", "Numer Indeksu", "Imie", "Nazwisko", "Wydział", "Kierunek", "Grupa"
             }
         ));
+        jTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable);
 
         jScrollPane2.setViewportView(jScrollPane1);
@@ -202,6 +207,11 @@ public class ProjectFrame extends javax.swing.JFrame {
 
         jbtnDelete.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jbtnDelete.setText("Usuń studenta");
+        jbtnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDeleteActionPerformed(evt);
+            }
+        });
         jPanel5.add(jbtnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 210, 60));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -226,7 +236,19 @@ public class ProjectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_nazwiskoActionPerformed
 
     private void jbtnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnUpdateActionPerformed
-        // TODO add your handling code here:
+        Project p = new Project();
+        StudentEntity st = new StudentEntity(
+                Integer.parseInt(id.getText()), 
+                Integer.parseInt(indeks.getText()), 
+                imie.getText(), 
+                nazwisko.getText(), 
+                wydzial.getText(), 
+                kierunek.getText(), 
+                grupa.getText()
+            );
+        p.update(st);
+        JOptionPane.showMessageDialog(null, "Zaktualizowano studenta");
+        
     }//GEN-LAST:event_jbtnUpdateActionPerformed
 
     private void jbtnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnResetActionPerformed
@@ -239,7 +261,7 @@ public class ProjectFrame extends javax.swing.JFrame {
         grupa.setText("");
     }//GEN-LAST:event_jbtnResetActionPerformed
 
-        private JFrame frame;
+    private JFrame frame;
     private void jbtnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExitActionPerformed
         frame  = new JFrame("Exit");
         if (JOptionPane.showConfirmDialog(frame, "Czy napewno chcesz wyjść?", "Zarządzanie Studentami",
@@ -260,7 +282,7 @@ public class ProjectFrame extends javax.swing.JFrame {
                 kierunek.getText(), 
                 grupa.getText()
             );
-            p.zapisz(st);
+            p.save(st);
         JOptionPane.showMessageDialog(null, "Dodano studenta");
     }//GEN-LAST:event_jbtnAddNewActionPerformed
 
@@ -283,12 +305,32 @@ public class ProjectFrame extends javax.swing.JFrame {
     
     private void jbtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPrintActionPerformed
         Project p = new Project();
-        show_students(p.wyswietl());
+        show_students(p.show());
     }//GEN-LAST:event_jbtnPrintActionPerformed
 
     private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idActionPerformed
+
+    private void jTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMouseClicked
+        DefaultTableModel RecordTable = (DefaultTableModel) jTable.getModel();
+        int SelectedRow = jTable.getSelectedRow();
+        
+        id.setText(RecordTable.getValueAt(SelectedRow,0).toString());
+        indeks.setText(RecordTable.getValueAt(SelectedRow,1).toString());
+        imie.setText(RecordTable.getValueAt(SelectedRow,2).toString());
+        nazwisko.setText(RecordTable.getValueAt(SelectedRow,3).toString());
+        wydzial.setText(RecordTable.getValueAt(SelectedRow,4).toString());
+        kierunek.setText(RecordTable.getValueAt(SelectedRow,5).toString());
+        grupa.setText(RecordTable.getValueAt(SelectedRow,6).toString());
+        
+    }//GEN-LAST:event_jTableMouseClicked
+
+    private void jbtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDeleteActionPerformed
+        Project p = new Project();
+        p.delete(Integer.parseInt(id.getText()));
+        JOptionPane.showMessageDialog(null, "Usunięto studenta");
+    }//GEN-LAST:event_jbtnDeleteActionPerformed
 
     /**
      * @param args the command line arguments

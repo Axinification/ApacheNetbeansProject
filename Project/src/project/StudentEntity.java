@@ -102,7 +102,7 @@ public class StudentEntity implements Serializable {
     public String getKierunek() {
         return kierunek;
     }
-    public void setkierunek(String kierunek) {
+    public void setKierunek(String kierunek) {
         this.kierunek = kierunek;
     }
     

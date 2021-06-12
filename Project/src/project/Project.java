@@ -22,12 +22,11 @@ public class Project {
         return emf.createEntityManager();
     }
     
-    public void zapisz( StudentEntity student) {
+    public void save( StudentEntity student) {
        EntityManager em = getEntityManager();
        em.getTransaction().begin();
        try {
             em.persist(student);
-            // 5. zatwierdzić transakcję  
             em.getTransaction().commit();
         } 
         catch (Exception e) {
@@ -39,7 +38,46 @@ public class Project {
         }
     }
     
-    public List<StudentEntity> wyswietl() {
+    public void update(StudentEntity student) {
+        EntityManager em = getEntityManager();
+        StudentEntity studentDB = em.find(StudentEntity.class, student.getId());
+        em.getTransaction().begin();
+        try {
+            studentDB.setId(student.getId());
+            studentDB.setIndeks(student.getIndeks());
+            studentDB.setImie(student.getImie());
+            studentDB.setNazwisko(student.getNazwisko());
+            studentDB.setWydzial(student.getWydzial());
+            studentDB.setKierunek(student.getKierunek());
+            studentDB.setGrupa(student.getGrupa());
+            
+        }
+        catch (Exception e) {
+            System.err.print("Error "+e.getMessage());
+            em.getTransaction().rollback();
+        }
+        finally {
+            em.getTransaction().commit();
+        }
+    }
+    
+    public void delete(int id) {
+        EntityManager em = getEntityManager();
+        StudentEntity studentDB = em.find(StudentEntity.class, id);
+        em.getTransaction().begin();
+        try {
+            em.remove(studentDB);
+        }
+        catch (Exception e) {
+            System.err.print("Error "+e.getMessage());
+            em.getTransaction().rollback();
+        }
+        finally {
+            em.getTransaction().commit();
+        }
+    }
+    
+    public List<StudentEntity> show() {
         EntityManager em = getEntityManager();
         TypedQuery<StudentEntity> q = em.createNamedQuery("StudentEntity.findAll",
                 StudentEntity.class);
@@ -48,7 +86,8 @@ public class Project {
         List<StudentEntity> result = q.getResultList();
         return result;
     }
-
+    
+    
     /**
      * @param args the command line arguments
      */
