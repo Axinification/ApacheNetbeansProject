@@ -43,7 +43,7 @@ public class Project {
         StudentEntity studentDB = em.find(StudentEntity.class, student.getId());
         em.getTransaction().begin();
         try {
-            studentDB.setId(student.getId());
+            
             studentDB.setIndeks(student.getIndeks());
             studentDB.setImie(student.getImie());
             studentDB.setNazwisko(student.getNazwisko());
